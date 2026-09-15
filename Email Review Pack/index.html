@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151515">
+  <title>Beatles Meta campaign · private review</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #171717;
+      --paper: #f4efe7;
+      --muted: #d5cec2;
+      --accent: #d2a35a;
+      --accent-dark: #9c6d2b;
+      --panel: rgba(18, 18, 18, .93);
+      --line: rgba(244, 239, 231, .2);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: #151515;
+      color: var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.5;
+    }
+
+    .backdrop,
+    .wash {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .backdrop {
+      z-index: -2;
+      background: url("images/06_Beatles_White_Room_Dog.png") center / cover no-repeat;
+      filter: blur(18px);
+      transform: scale(1.08);
+    }
+
+    .wash {
+      z-index: -1;
+      background:
+        linear-gradient(115deg, rgba(9, 9, 9, .88) 0%, rgba(9, 9, 9, .62) 42%, rgba(9, 9, 9, .78) 100%),
+        radial-gradient(circle at 50% 44%, rgba(210, 163, 90, .14), transparent 34%);
+    }
+
+    .shell {
+      width: min(1080px, calc(100% - 32px));
+      min-height: 100svh;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      padding: 32px 0;
+    }
+
+    .panel {
+      width: min(520px, 100%);
+      padding: clamp(28px, 5vw, 48px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      backdrop-filter: blur(10px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font: 700 11px/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, p { margin: 0; }
+
+    h1 {
+      max-width: 12ch;
+      font-size: clamp(36px, 7vw, 68px);
+      line-height: .96;
+      letter-spacing: -.035em;
+    }
+
+    .intro {
+      margin-top: 20px;
+      max-width: 38rem;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    form { margin-top: 30px; }
+
+    label {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--paper);
+      font: 700 12px/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .entry {
+      display: flex;
+      gap: 10px;
+    }
+
+    input,
+    button,
+    .review-link {
+      font: 700 15px/1.2 Arial, Helvetica, sans-serif;
+    }
+
+    input {
+      min-width: 0;
+      flex: 1;
+      padding: 14px 15px;
+      border: 1px solid rgba(244, 239, 231, .38);
+      border-radius: 2px;
+      background: rgba(255, 255, 255, .1);
+      color: var(--paper);
+      outline: none;
+    }
+
+    input::placeholder { color: #b8b0a5; }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(210, 163, 90, .2);
+    }
+
+    button {
+      flex: 0 0 auto;
+      padding: 14px 18px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      background: var(--accent);
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    button:hover { background: #e2b96f; }
+    button:focus-visible, .review-link:focus-visible { outline: 3px solid #f3cf91; outline-offset: 3px; }
+
+    .status {
+      min-height: 1.5em;
+      margin-top: 12px;
+      color: #f0b5a5;
+      font: 14px/1.35 Arial, Helvetica, sans-serif;
+    }
+
+    .shake { animation: shake .28s ease-in-out; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      30% { transform: translateX(-7px); }
+      70% { transform: translateX(7px); }
+    }
+
+    [hidden] { display: none !important; }
+
+    .index-panel {
+      width: min(760px, 100%);
+      padding: clamp(28px, 5vw, 50px);
+      background: rgba(18, 18, 18, .94);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .42);
+    }
+
+    .index-panel h2 { font-size: clamp(32px, 6vw, 56px); line-height: 1; }
+
+    .index-panel > p {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .review-link {
+      display: grid;
+      gap: 5px;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      color: var(--paper);
+      text-decoration: none;
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .review-link:hover {
+      background: rgba(210, 163, 90, .13);
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .review-link strong { color: var(--accent); }
+    .review-link span { color: var(--muted); font: 14px/1.4 Arial, Helvetica, sans-serif; font-weight: 400; }
+
+    .small-note {
+      margin-top: 26px;
+      color: #aaa095;
+      font: 12px/1.45 Arial, Helvetica, sans-serif;
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 22px, 1080px); padding: 11px 0; }
+      .panel, .index-panel { padding: 26px 22px; }
+      .entry { display: grid; }
+      button { width: 100%; }
+      h1 { font-size: clamp(40px, 16vw, 62px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <div class="wash" aria-hidden="true"></div>
+
+  <main class="shell">
+    <section class="panel" id="gate" aria-labelledby="gate-title">
+      <p class="eyebrow">PickArt · private review</p>
+      <h1 id="gate-title">Beatles Meta campaign</h1>
+      <p class="intro">Enter the review password to open the campaign pages.</p>
+      <form id="unlock-form">
+        <label for="password">Review password</label>
+        <div class="entry">
+          <input id="password" name="password" type="password" autocomplete="off" spellcheck="false" placeholder="Enter password" required>
+          <button type="submit">Open pack</button>
+        </div>
+        <p class="status" id="status" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="index-panel" id="review-index" aria-labelledby="index-title" hidden>
+      <p class="eyebrow">PickArt · review pack</p>
+      <h2 id="index-title">Choose a review page</h2>
+      <p>The current Beatles campaign material is gathered here. Open the page you want to review, then return here for the next one.</p>
+      <nav class="review-list" aria-label="Campaign review pages">
+        <a class="review-link" href="Beatles_Meta_Ad_Review_Mockups.html">
+          <strong>Facebook ad mockups</strong>
+          <span>Image-and-copy review for the campaign options.</span>
+        </a>
+        <a class="review-link" href="Beatles_Meta_Ad_Copy_Review_Decor_Focus_v2.html">
+          <strong>Decor-focus copy review</strong>
+          <span>Shorter story-led copy with room-focused endings.</span>
+        </a>
+        <a class="review-link" href="Closer_Crop_Comparison.html">
+          <strong>Closer-crop comparison</strong>
+          <span>Side-by-side image crop review.</span>
+        </a>
+      </nav>
+      <p class="small-note">This is a simple privacy gate for the review pack, not a high-security login.</p>
+    </section>
+  </main>
+
+  <script>
+    const password = 'blaze1875';
+    const gate = document.getElementById('gate');
+    const reviewIndex = document.getElementById('review-index');
+    const form = document.getElementById('unlock-form');
+    const field = document.getElementById('password');
+    const status = document.getElementById('status');
+
+    function unlock() {
+      gate.hidden = true;
+      reviewIndex.hidden = false;
+      sessionStorage.setItem('beatles-review-unlocked', 'yes');
+      reviewIndex.querySelector('a').focus();
+    }
+
+    if (sessionStorage.getItem('beatles-review-unlocked') === 'yes') unlock();
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (field.value === password) {
+        status.textContent = '';
+        unlock();
+        return;
+      }
+      status.textContent = 'That password does not match.';
+      field.select();
+      gate.classList.remove('shake');
+      void gate.offsetWidth;
+      gate.classList.add('shake');
+    });
+  </script>
+</body>
+</html>

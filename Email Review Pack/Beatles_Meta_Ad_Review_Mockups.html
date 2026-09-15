@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PickArt Beatles Meta ad review pack</title>
+  <style>
+    :root { color-scheme: light; --ink:#1d1d1d; --muted:#6c6965; --line:#ded9d1; --paper:#f5f1eb; --card:#fff; --accent:#7d1f1f; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.45; }
+    header { padding:36px clamp(18px,5vw,64px) 32px; background:#171717; color:#f8f5ef; }
+    h1,h2,h3,p { margin:0; }
+    h1 { max-width:1000px; font-size:clamp(28px,4vw,46px); line-height:1.08; }
+    header p { max-width:900px; margin-top:14px; color:#d8d1c7; font-size:16px; }
+    main { width:min(1280px,100%); margin:0 auto; padding:28px clamp(14px,3vw,38px) 60px; }
+    .notice { border-left:4px solid var(--accent); padding:12px 16px; margin-bottom:28px; background:#fff; }
+    .notice strong { display:block; margin-bottom:4px; }
+    .filters { display:flex; flex-wrap:wrap; gap:9px; margin:0 0 30px; }
+    .filters button { border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink); cursor:pointer; padding:8px 12px; font-size:13px; }
+    .filters button.active { border-color:var(--accent); color:var(--accent); font-weight:700; }
+    .group { margin-top:38px; }
+    .group:first-of-type { margin-top:0; }
+    .group h2 { padding-bottom:9px; border-bottom:1px solid var(--line); font-size:22px; }
+    .post { display:grid; grid-template-columns:minmax(300px, 1fr) minmax(340px, 1fr); gap:26px; align-items:start; padding:28px 0 32px; border-bottom:1px solid var(--line); }
+    .post:last-child { border-bottom:0; }
+    .visual { background:#111; border:1px solid #d3cec6; }
+    .visual img { display:block; width:100%; max-height:610px; object-fit:contain; background:#111; }
+    .visual small { display:block; padding:9px 12px; color:#d9d4cd; font-size:11px; word-break:break-word; }
+    .copy { background:var(--card); border:1px solid var(--line); padding:24px 25px 26px; }
+    .label { color:var(--muted); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .copy h3 { margin-top:7px; font-size:23px; line-height:1.18; }
+    .copy .headline { margin-top:14px; padding-top:13px; border-top:1px solid var(--line); color:var(--accent); font-weight:700; font-size:18px; }
+    .copy .body { margin-top:17px; white-space:pre-line; font-size:15px; }
+    .copy .meta { margin-top:18px; padding-top:13px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .copy .meta strong { color:var(--ink); }
+    @media (max-width:850px) { .post { grid-template-columns:1fr; gap:16px; } .visual img { max-height:none; } .copy { padding:20px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PickArt Beatles Meta ad review pack</h1>
+    <p>Twelve campaign options: six restored event photographs and six room/decor presentations. Each item shows the image with its proposed Meta headline and primary text. Draft wording remains editable until final approval.</p>
+  </header>
+  <main>
+    <div class="notice"><strong>How to use this pack</strong>Open this file in Chrome. The image copies sit beside it in the <em>images</em> folder, so the complete folder can be zipped and emailed as one review pack.</div>
+    <div class="filters" id="filters" aria-label="Filter review pack"></div>
+    <div id="content"></div>
+  </main>
+  <script>
+    const posts = [
+      { family:'Event photographs', title:'The Beatles — full group', headline:'Before the world followed', image:'../images/Restored Event Photographs/The_Beatles_After_Trial.png', body:`Britain was already in love. The world was about to follow.
+
+15 December 1963. The Beatles record the Merseybeat special of Thank Your Lucky Stars in Birmingham, closing the programme with “She Loves You”. Within weeks, their American breakthrough would turn British Beatlemania into a worldwide phenomenon.
+
+The television cameras in this photograph place you right there: four young men, a studio stage, and an extraordinary future just ahead.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated fine-art print in an edition of only 100, made with fine-art paper and archival inks.
+
+Discover the print.` },
+      { family:'Event photographs', title:'John Lennon', headline:'Lennon, before the next chapter', image:'../images/Restored Event Photographs/John_Lennon_After_Trial_v2_Smoke.png', body:`The wit was already unmistakable. The worldwide fame was still ahead.
+
+Only weeks earlier, John Lennon had cheekily asked the Royal Variety audience to rattle their jewellery. Now it was 15 December 1963: Thank Your Lucky Stars, the Merseybeat special, and a Beatles set closing with “She Loves You”.
+
+Here is Lennon in that remarkable interval—already a national talking point, about to become a familiar face around the world.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. Numbered and authenticated; an edition of only 100 on fine-art paper with archival inks.
+
+Discover the print.` },
+      { family:'Event photographs', title:'Paul McCartney', headline:'A young man. An extraordinary future.', image:'../images/Restored Event Photographs/Paul_McCartney_After_Trial.png', body:`At 21, Paul McCartney had already helped write the song Britain couldn't let go.
+
+“She Loves You” would remain the Beatles’ best-selling UK single. On 15 December 1963, it closed their set for the Merseybeat special of Thank Your Lucky Stars. Their American breakthrough was just weeks away.
+
+This is Paul before the stadiums and the decades of songs still to come: a young musician caught at a turning point.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated edition of only 100, printed on fine-art paper with archival inks.
+
+Discover the print.` },
+      { family:'Event photographs', title:'Ringo Starr', headline:'Sixteen months that changed everything', image:'../images/Restored Event Photographs/Ringo_Starr_After_Trial.png', body:`He had been a Beatle for barely sixteen months.
+
+By 15 December 1963, Ringo Starr was behind the kit for the Merseybeat special of Thank Your Lucky Stars, with “She Loves You” closing the programme. The four-man line-up we now know so well was still remarkably new.
+
+Britain had embraced them. America was next. This photograph catches Ringo between joining the band and becoming part of worldwide music history.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated fine-art edition of only 100, made with fine-art paper and archival inks.
+
+Discover the print.` },
+      { family:'Event photographs', title:'Paul McCartney and George Harrison', headline:'Before the fame, a friendship', image:'../images/Restored Event Photographs/Paul_George_After_Trial.png', body:`Before the television cameras, they were two Liverpool schoolboys who loved guitars.
+
+Paul McCartney and George Harrison knew each other before the Beatles existed. Here they are on 15 December 1963, at the Merseybeat special of Thank Your Lucky Stars, whose Beatles finale was “She Loves You”.
+
+Paul was 21; George just 20. An early friendship had brought them this far. Within weeks, their band would make its American breakthrough.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. Numbered and authenticated, in an edition of only 100 on fine-art paper with archival inks.
+
+Discover the print.` },
+      { family:'Event photographs', title:'George Harrison and Ringo Starr', headline:'A turbulent beginning. A remarkable bond.', image:'../images/Restored Event Photographs/George_Ringo_After_Trial.png', body:`When Ringo joined the Beatles, the welcome wasn't unanimous. George ended up with a black eye.
+
+An angry fan struck Harrison during the backlash to Pete Best’s replacement in 1962. By December 1963, George and Ringo were part of the line-up carrying Beatlemania towards the world.
+
+This photograph captures them at Thank Your Lucky Stars on 15 December, for the Merseybeat special that closed with “She Loves You”.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated edition of only 100 on fine-art paper with archival inks. 64 remain.
+
+Discover the print.` },
+      { family:'Room / decor', title:'George and Ringo — oak-framed hallway', headline:'A Band of Brothers', image:'../images/Closer Crop Variants - Review/01_George_Ringo_Hallway_Closer_Crop_v1.png', body:`When angry fans turned on Ringo after he replaced Pete Best, George stood up for his new bandmate. He took a punch for it—and got a black eye. A bruising beginning to a bond that would carry them far beyond Liverpool.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. Numbered and authenticated; edition of only 100. Fine-art paper and archival inks. 64 remain.
+
+More than decor, this is a story for the room: a rare image that sets the tone, makes the space feel personal and gives people something worth asking about.
+
+Shown framed for inspiration.` },
+      { family:'Room / decor', title:'John Lennon — garden doorway and dog', headline:'A mischievous spirit. A soft spot for home.', image:'../images/02_John_Garden_Dog.png', body:`Long before the Beatles, John Lennon was making his friends laugh with The Daily Howl, his homemade collection of cartoons, jokes and comic inventions. That playful spirit never feels far away—as though somebody is always up to something.
+
+Even at the height of his fame, he would call home to ask after Tim, his cat. Behind that sharp tongue lay a soft spot.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. Numbered and authenticated; edition of only 100 on fine-art paper with archival inks.
+
+For the person who thinks they have everything, here is something they haven’t got: a story-led piece of art that sets the tone of the room and gives every visitor a talking point.
+
+Shown framed for inspiration.` },
+      { family:'Room / decor', title:'Paul McCartney — modern art apartment', headline:'Your favourite music deserves a place on the wall too.', image:'../images/04_Paul_Modern_Apartment.png', body:`For a room shaped by the things you love.
+
+Among sculpture, warm textures and favourite art, Paul looks entirely at home. He was just 21 and had already co-written “She Loves You”, the Beatles’ best-ever-selling UK single. It was the moment at which they’d broken the back of Britain and were about to break America.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated edition of only 100 on fine-art paper with archival inks.
+
+A photograph with enough history to hold the wall and enough story to start a conversation.
+
+Shown framed for inspiration.` },
+      { family:'Room / decor', title:'Paul McCartney — waterfront listening loft', headline:'For the person who has almost everything.', image:'../images/05_Paul_Waterfront_Loft.png', body:`They have the equipment. They have the vinyl. Now give them a moment behind the music.
+
+The record goes on, the lights go down, and Paul has a place beside the collection. This photograph takes you back to December 1963, to a set including “All My Loving”, with “She Loves You” closing the show.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated edition of only 100 on fine-art paper with archival inks.
+
+For the person who has almost everything, this rare image sets the mood of the listening space, gives the room a focal point and leaves a story behind.
+
+Shown framed for inspiration.` },
+      { family:'Room / decor', title:'Ringo Starr — records, plants and turntable', headline:'For the room where you really listen.', image:'../images/Closer Crop Variants - Review/03_Ringo_Listening_Room_Closer_Crop_v3.png', body:`A place for the records. A place for Ringo.
+
+Wood, lamplight, a turntable and a photograph that belongs among the music. Ringo had been a Beatle for barely 16 months, yet here he was playing “She Loves You” to close out that Merseybeat special.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. Numbered and authenticated, an edition of only 100, printed on fine-art paper with archival ink.
+
+A thoughtful gift for the person who listens right through to the last track: more than a picture, it gives the room a focal point and a story that waits for the inevitable question.
+
+Shown framed for inspiration.` },
+      { family:'Room / decor', title:'The Beatles — white room and dog', headline:'Four familiar faces, one very happy home.', image:'../images/Closer Crop Variants - Review/06_Beatles_White_Room_Dog_Closer_Crop_v2.png', body:`The Beatles on the wall, the dog by your feet. Plenty to talk about.
+
+To become the Fab Four, they had put in the hours. Hundreds of gigs, including 292 appearances at Liverpool’s Cavern Club alone. Even after a show, the work carried on. In a Newcastle hotel room, John and Paul sat on twin beds with their guitars, working on “She Loves You”. They finished it back at Paul’s house in Liverpool, where an unexpected critic was waiting.
+
+Paul’s dad Jim had one small improvement… Could they not replace those American-sounding yeahs with a nice English yes?
+
+Thankfully, they didn’t take his advice. Beatlemania was never that polite.
+
+From the previously unseen private archive of renowned photographer Willoughby “Gus” Gullachsen. A numbered, authenticated edition of only 100, printed on fine-art paper with archival ink.
+
+More than decor, this is a warm focal point for the room: a little music history, a good story and plenty for visitors to talk about.
+
+Shown framed for inspiration.` }
+    ];
+
+    const filters = document.getElementById('filters');
+    const content = document.getElementById('content');
+    const families = ['All', ...new Set(posts.map(post => post.family))];
+    let active = 'All';
+    const esc = value => value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+    function renderFilters() {
+      filters.innerHTML = families.map(family => `<button type="button" class="${family === active ? 'active' : ''}" data-family="${esc(family)}">${esc(family)}</button>`).join('');
+      filters.querySelectorAll('button').forEach(button => button.addEventListener('click', () => { active = button.dataset.family; renderFilters(); renderPosts(); }));
+    }
+    function renderPosts() {
+      const selected = posts.filter(post => active === 'All' || post.family === active);
+      const groups = families.slice(1).map(family => ({ family, posts:selected.filter(post => post.family === family) })).filter(group => group.posts.length);
+      content.innerHTML = groups.map(group => `<section class="group"><h2>${esc(group.family)}</h2>${group.posts.map((post,index) => `<article class="post"><div class="visual"><img src="${esc(post.image)}" alt="${esc(post.title)}"><small>Image ${index + 1} in this view · ${esc(post.image.replace('../',''))}</small></div><div class="copy"><div class="label">${esc(post.family)}</div><h3>${esc(post.title)}</h3><div class="headline">${esc(post.headline)}</div><div class="body">${esc(post.body)}</div><div class="meta"><strong>Review note:</strong> Image and wording are presented together for approval. Standard provenance and product details are included in the copy.</div></div></article>`).join('')}</section>`).join('');
+    }
+    renderFilters();
+    renderPosts();
+  </script>
+</body>
+</html>

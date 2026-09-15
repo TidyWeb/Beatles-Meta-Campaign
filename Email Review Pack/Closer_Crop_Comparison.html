@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PickArt Beatles closer-crop comparison</title>
+  <style>
+    :root { color-scheme:light; --ink:#1d1d1d; --muted:#6c6965; --line:#ded9d1; --paper:#f5f1eb; --card:#fff; --accent:#7d1f1f; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.45; }
+    header { padding:36px clamp(18px,5vw,64px) 32px; background:#171717; color:#f8f5ef; }
+    h1,h2,h3,p { margin:0; }
+    h1 { max-width:1000px; font-size:clamp(28px,4vw,46px); line-height:1.08; }
+    header p { max-width:920px; margin-top:14px; color:#d8d1c7; font-size:16px; }
+    main { width:min(1500px,100%); margin:0 auto; padding:30px clamp(14px,3vw,38px) 64px; }
+    section { margin-top:42px; }
+    section:first-child { margin-top:0; }
+    h2 { padding-bottom:10px; border-bottom:1px solid var(--line); font-size:24px; }
+    .note { margin-top:8px; color:var(--muted); }
+    .comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; margin-top:20px; }
+    .comparison.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    figure { margin:0; background:var(--card); border:1px solid var(--line); padding:12px; }
+    img { display:block; width:100%; height:auto; background:#111; }
+    figcaption { padding:11px 3px 2px; font-size:14px; }
+    figcaption strong { display:block; color:var(--accent); font-size:16px; }
+    figcaption span { display:block; margin-top:3px; color:var(--muted); }
+    @media (max-width:900px) { .comparison, .comparison.three { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PickArt Beatles closer-crop comparison</h1>
+    <p>Separate review variants. The current campaign images have not been replaced. These crops push the camera closer so the framed Beatles photograph carries more of the composition while the room still establishes the setting.</p>
+  </header>
+  <main>
+    <section>
+      <h2>George and Ringo — hallway</h2>
+      <p class="note">The closer crop keeps the hallway, stairs and bench, while allowing the framed photograph to take visual priority.</p>
+      <div class="comparison">
+        <figure><img src="../images/01_George_Ringo_Hallway.png" alt="Original George and Ringo hallway mock-up"><figcaption><strong>Original</strong><span>Current campaign image</span></figcaption></figure>
+        <figure><img src="../images/Closer%20Crop%20Variants%20-%20Review/01_George_Ringo_Hallway_Closer_Crop_v1.png" alt="Closer crop of George and Ringo hallway mock-up"><figcaption><strong>Closer crop v1</strong><span>Artwork larger; room retained</span></figcaption></figure>
+      </div>
+    </section>
+    <section>
+      <h2>Ringo Starr — listening room</h2>
+      <p class="note">The tighter option makes Ringo and the drum kit legible at a glance while retaining the records, turntable, smaller frames and warm room atmosphere.</p>
+      <div class="comparison three">
+        <figure><img src="../images/03_Ringo_Listening_Room.png" alt="Original Ringo listening-room mock-up"><figcaption><strong>Original</strong><span>Current campaign image</span></figcaption></figure>
+        <figure><img src="../images/Closer%20Crop%20Variants%20-%20Review/03_Ringo_Listening_Room_Closer_Crop_v1.png" alt="Medium closer crop of Ringo listening-room mock-up"><figcaption><strong>Closer crop v1</strong><span>Moderate push-in</span></figcaption></figure>
+        <figure><img src="../images/Closer%20Crop%20Variants%20-%20Review/03_Ringo_Listening_Room_Closer_Crop_v3.png" alt="Tighter closer crop of Ringo listening-room mock-up"><figcaption><strong>Closer crop v3</strong><span>Stronger push-in</span></figcaption></figure>
+      </div>
+    </section>
+    <section>
+      <h2>The Beatles — white room and dog</h2>
+      <p class="note">The closer crop cuts into the chair, reduces the ceiling and brings the dog and the Beatles print forward without losing the room.</p>
+      <div class="comparison">
+        <figure><img src="../images/06_Beatles_White_Room_Dog.png" alt="Original Beatles white-room and dog mock-up"><figcaption><strong>Original</strong><span>Current campaign image</span></figcaption></figure>
+        <figure><img src="../images/Closer%20Crop%20Variants%20-%20Review/06_Beatles_White_Room_Dog_Closer_Crop_v1.png" alt="Closer crop of Beatles white-room and dog mock-up"><figcaption><strong>Closer crop v1</strong><span>Artwork and dog brought forward</span></figcaption></figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
